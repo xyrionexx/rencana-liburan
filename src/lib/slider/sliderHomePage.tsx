@@ -106,7 +106,7 @@ export default function SliderHomePage() {
         </div>
 
         {/* Navigation buttons */}
-        <button
+        {/* <button
           onClick={handlePrev}
           className="absolute top-1/2 left-2 -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-md hover:bg-white"
         >
@@ -117,7 +117,7 @@ export default function SliderHomePage() {
           className="absolute top-1/2 right-2 -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-md hover:bg-white"
         >
           <Icon icon="mdi:chevron-right" width="24" height="24" />
-        </button>
+        </button> */}
 
         {/* Indicator dots */}
         <div className="flex justify-center mt-4 gap-2">
@@ -134,14 +134,14 @@ export default function SliderHomePage() {
       </div>
 
       {/* Mini text slider below like in the image */}
-      <div className="flex justify-between w-full mt-8 px-4 overflow-x-auto gap-4 text-sm scrollbar-hide">
+      <div className="flex justify-between w-full mt-8 px-9 overflow-x-auto gap-4 text-sm scrollbar-hide">
         {sliderItems.map((item, index) => (
           <button
             key={index}
             onClick={() => handleDotClick(index)}
             className={`whitespace-nowrap px-4 py-2 transition-all ${
               currentIndex === index
-                ? "font-bold border-b-2 border-black"
+                ? "font-bold border-b-2 border-black text-[#6D94C5]"
                 : "text-gray-500"
             }`}
           >
