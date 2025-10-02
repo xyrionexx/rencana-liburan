@@ -97,7 +97,7 @@ export default function SliderHomePage() {
                 <h3 className="text-lg font-medium text-black mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-600 max-w-2xl mx-auto">
+                <p className="text-sm text-gray-600 dark:text-white max-w-2xl mx-auto">
                   {item.description}
                 </p>
               </div>
@@ -126,7 +126,9 @@ export default function SliderHomePage() {
               key={index}
               onClick={() => handleDotClick(index)}
               className={`h-2 rounded-full transition-all ${
-                currentIndex === index ? "w-8 bg-black" : "w-2 bg-gray-300"
+                currentIndex === index
+                  ? "w-8 bg-black dark:bg-blue-300"
+                  : "w-2 bg-gray-300"
               }`}
             ></button>
           ))}
@@ -141,8 +143,8 @@ export default function SliderHomePage() {
             onClick={() => handleDotClick(index)}
             className={`whitespace-nowrap px-4 py-2 transition-all ${
               currentIndex === index
-                ? "font-bold border-b-2 border-black text-[#6D94C5]"
-                : "text-gray-500"
+                ? "font-bold border-b-2 border-black dark:border-blue-300 text-[#6D94C5]"
+                : "text-gray-500 dark:text-white"
             }`}
           >
             {item.title}
