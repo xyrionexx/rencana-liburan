@@ -4,8 +4,8 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 export default function Footer() {
   return (
     <>
-      <footer className="w-full p-5 sm:p-8 lg:p-10 bg-[#E8DFCA]">
-        <div className="flex flex-col lg:flex-row justify-between gap-8 sm:gap-12 lg:gap-20 xl:gap-32 text-black mb-6 sm:mb-8">
+      <footer className="w-full p-5 sm:p-8 lg:p-10 bg-[#E8DFCA] dark:bg-[#000000] shadow-2xl dark:shadow-white">
+        <div className="flex flex-col lg:flex-row justify-between gap-8 sm:gap-12 lg:gap-20 xl:gap-32  mb-6 sm:mb-8">
           {/* Perkenalan Section */}
           <div className="perkenalan justify-start w-full lg:w-[40%] gap-4 sm:gap-5 flex flex-col">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
@@ -27,8 +27,7 @@ export default function Footer() {
                   icon="line-md:youtube"
                   width="35"
                   height="35"
-                  className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9"
-                  style={{ color: "#000000" }}
+                  className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 color-black dark:color-white"
                 />
               </a>
               <a
@@ -40,8 +39,7 @@ export default function Footer() {
                   icon="line-md:instagram"
                   width="35"
                   height="35"
-                  className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9"
-                  style={{ color: "#000000" }}
+                  className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 color-black dark:color-white"
                 />
               </a>
               <a
@@ -53,8 +51,7 @@ export default function Footer() {
                   icon="line-md:twitter-x"
                   width="35"
                   height="35"
-                  className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9"
-                  style={{ color: "#000000" }}
+                  className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 color-black dark:color-white"
                 />
               </a>
               <a
@@ -66,8 +63,7 @@ export default function Footer() {
                   icon="line-md:facebook"
                   width="35"
                   height="35"
-                  className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9"
-                  style={{ color: "#000000" }}
+                  className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 color-black dark:color-white"
                 />
               </a>
             </div>
@@ -83,7 +79,7 @@ export default function Footer() {
                 <p>
                   <a
                     href="#"
-                    className="hover:underline hover:text-gray-700 transition-colors"
+                    className="hover:underline hover:text-gray-700 transition-colors color-black dark:color-white"
                   >
                     Terms of Use
                   </a>
@@ -91,7 +87,7 @@ export default function Footer() {
                 <p>
                   <a
                     href="#"
-                    className="hover:underline hover:text-gray-700 transition-colors"
+                    className="hover:underline hover:text-gray-700 transition-colors color-black dark:color-white"
                   >
                     Privacy Policy
                   </a>
@@ -133,7 +129,7 @@ export default function Footer() {
                 <p>
                   <Link
                     href="/"
-                    className="hover:underline hover:text-gray-700 transition-colors"
+                    className="hover:underline hover:text-gray-700 transition-colors color-black dark:color-white"
                   >
                     Home
                   </Link>
@@ -141,7 +137,7 @@ export default function Footer() {
                 <p>
                   <Link
                     href="/about"
-                    className="hover:underline hover:text-gray-700 transition-colors"
+                    className="hover:underline hover:text-gray-700 transition-colors color-black dark:color-white"
                   >
                     About
                   </Link>
@@ -149,7 +145,7 @@ export default function Footer() {
                 <p>
                   <Link
                     href="/contact"
-                    className="hover:underline hover:text-gray-700 transition-colors"
+                    className="hover:underline hover:text-gray-700 transition-colors color-black dark:color-white "
                   >
                     Contact
                   </Link>
@@ -170,7 +166,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-black/20 pt-4 sm:pt-6">
-          <p className="text-black text-center text-xs sm:text-sm">
+          <p className=" text-center text-xs sm:text-sm">
             &copy; 2025 Lumotrip. All Rights Reserved.
           </p>
         </div>

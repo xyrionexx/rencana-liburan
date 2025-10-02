@@ -71,7 +71,7 @@ export default function Navbar() {
       <nav
         className={`flex justify-between w-full h-16 items-center px-5 sm:px-8 lg:px-14 fixed z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg"
+            ? "bg-[#F5EFE6]/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg"
             : "bg-transparent"
         }`}
       >
