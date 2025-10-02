@@ -15,8 +15,8 @@ export default function AboutPage() {
     <>
       <div className="">
         <div className="heroPageAbout flex justify-center items-center h-screen w-screen relative ">
-          <div className="bg-[#6D94C5] absolute top-0 left-0 w-[25vw] h-[25vw] rounded-4xl blur-3xl z-[-1]"></div>
-          <div className="bg-[#CBDCEB] absolute bottom-0 right-0 w-[30vw] h-[30vw] rounded-4xl blur-3xl z-[-1]"></div>
+          <div className="bg-gradient-to-br from-[#6D94C5] via-[#8BA8CE] to-[#A9BED7] absolute top-0 left-0 w-[40vw] sm:w-[30vw] lg:w-[25vw] h-[40vw] sm:h-[30vw] lg:h-[25vw] rounded-full blur-3xl opacity-40 z-[-1] animate-pulse"></div>
+          <div className="bg-gradient-to-tl from-[#CBDCEB] via-[#B8D4E8] to-[#9CC4DD] absolute bottom-0 right-0 w-[45vw] sm:w-[35vw] lg:w-[30vw] h-[45vw] sm:h-[35vw] lg:h-[30vw] rounded-full blur-3xl opacity-30 z-[-1]  animate-pulse delay-700"></div>
           <div className="flex flex-col items-center">
             <h1 className="text-8xl font-bold max-sm:text-6xl">LumoTrip</h1>
             <p className="text-2xl">Home / About</p>
