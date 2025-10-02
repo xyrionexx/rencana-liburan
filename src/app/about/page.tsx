@@ -2,6 +2,7 @@ import { Icon } from "@iconify/react";
 import Image from "next/image";
 import about from "@/assets/about.jpg";
 import aboutpeminjaman from "@/assets/aboutpeminjaman.jpg";
+import my from "@/assets/my.jpg";
 
 export default function AboutPage() {
   return (
@@ -16,7 +17,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="w-screen  flex items-center px-20">
+        <div className="w-screen  flex items-center px-20 h-screen">
           <div className="flex flex-col gap-8">
             <h2 className="text-6xl font-medium">ABOUT LUMOTRIP</h2>
             <div className="line border-[1px] border-black"></div>
@@ -45,6 +46,25 @@ export default function AboutPage() {
                   Lumotrip, discover a new way to explore the world and create
                   unforgettable travel moments.
                 </p>
+              </div>
+            </div>
+            <div className="flex justify-between gap-10">
+              <div className="img w-[40%]">
+                <Image src={my} alt="About" className="w-[100%] h-[60vh]" />
+              </div>
+              <div className="flex flex-col gap-2 w-[60%]">
+                <h2 className="text-5xl font-bold">Design By</h2>
+                <p className="text-2xl">Adit Rahmat Hidayat</p>
+                <div className="quote">
+                  <h2 className="text-2xl">
+                    <span>"</span>{" "}
+                    <i>
+                      Planning a holiday means giving yourself a break — to
+                      pause, breathe, and return refreshed.
+                    </i>
+                    <span>"</span>
+                  </h2>
+                </div>
               </div>
             </div>
           </div>

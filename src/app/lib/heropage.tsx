@@ -34,38 +34,36 @@ export default function HomePage() {
               height={45}
               className="rounded-full z-[2] absolute left-20"
             />
-            <h2 className="absolute left-36 top-2 text-white bg-black p-1 rounded-2xl px-4">
+            <h2 className="absolute left-36 top-2   p-1 rounded-2xl px-4">
               Trusted 100+
             </h2>
           </div>
-          <h1 className="text-4xl font-medium text-black w-[90%]">
+          <h1 className="text-4xl font-medium  w-[90%]">
             Find the best destinations, book with ease, and make memories that
             last forever.
           </h1>
-          <p className=" text-black w-[50%] text-justify">
+          <p className="  w-[50%] text-justify">
             Discover the world's most beautiful destinations and create
             unforgettable memories with our travel platform.
           </p>
           <div className="buttonGetStarted mb-10">
-            <button className="bg-black text-white flex items-center gap-2 py-2 px-4 rounded-3xl">
+            <button className="  flex items-center gap-2 py-2 px-4 rounded-3xl">
               <span>Get Started</span>
               <Icon icon="material-symbols:arrow-right-alt" />
             </button>
           </div>
           <div className="forImformation flex flex-col gap-4">
-            <p className="text-black">
-              For more Information, enter your email address
-            </p>
+            <p className="">For more Information, enter your email address</p>
             <div className="parentInputEmail flex items-center">
-              <div className="inputEmail border-[1px] flex border-black rounded-4xl w-[35% px-2 py-1.5">
+              <div className="inputEmail border-[1px] flex border-black rounded-4xl w-[35% px-2 py-1.5 flex justify-center items-center gap-3">
                 <Icon icon="material-symbols:mail-outline" className="" />
                 <input
                   type="text"
                   placeholder="Email Address"
-                  className="flex-grow outline-none text-black"
+                  className="flex-grow outline-none flex "
                 />
               </div>
-              <button className="bg-black text-white p-1 rounded-4xl">
+              <button className=" bg-black dark:bg-white  p-1 rounded-4xl">
                 <Icon
                   icon="line-md:arrow-up"
                   width="30"
@@ -83,13 +81,13 @@ export default function HomePage() {
       </div>
 
       <div className=" px-8">
-        <h2 className="text-2xl font-bold text-black text-center mb-6">
+        <h2 className="text-2xl font-bold  text-center mb-6">
           Vacation Planning Features
         </h2>
         <SliderHomePage />
       </div>
 
-      <div className="Community Growth Section text-black px-20 flex items-center w-screen h-screen">
+      <div className="Community Growth Section  px-20 flex items-center w-screen h-screen">
         <div className="flex flex-col gap-10">
           <div className="headline flex flex-col gap-5">
             <h2 className="text-5xl  w-[90%] font-bold">
@@ -141,6 +139,10 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="  px-20 h-screen w-screen">
+        <h2 className="text-5xl font-bold">Testimonials</h2>
       </div>
     </>
   );
