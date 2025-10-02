@@ -11,7 +11,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <div className="w-full min-h-screen flex flex-col lg:flex-row justify-between items-center px-5 sm:px-10 lg:px-20 py-10 lg:py-0 relative">
         <div className="bg-[#6D94C5] absolute top-0 left-0 w-[40vw] sm:w-[30vw] lg:w-[25vw] h-[40vw] sm:h-[30vw] lg:h-[25vw] rounded-4xl blur-3xl z-[-1]"></div>
-        <div className="bg-[#CBDCEB] absolute bottom-0 right-0 w-[45vw] sm:w-[35vw] lg:w-[30vw] h-[45vw] sm:h-[35vw] lg:h-[30vw] rounded-4xl blur-3xl z-[-1]"></div>
+        <div className="bg-[#CBDCEB] absolute bottom-0 right-0 w-[45vw] sm:w-[35vw] lg:w-[30vw] h-[45vw] sm:h-[35vw] lg:h-[30vw] rounded-4xl blur-3xl z-[-1] dark:right-40 dark:bottom-14"></div>
 
         <div className="flex flex-col w-full lg:w-[50%] gap-4 sm:gap-5 mb-8 lg:mb-0 max-sm:mt-10">
           {/* User Avatars */}
