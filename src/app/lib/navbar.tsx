@@ -6,7 +6,7 @@ import logoLightMode from "@/assets/logoLightMode.png";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import * as React from "react";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import {
   DropdownMenu,
@@ -21,7 +21,7 @@ export function ModeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant="outline" size="icon" className="h-9 w-9">
           <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
           <span className="sr-only">Toggle theme</span>
@@ -43,56 +43,206 @@ export function ModeToggle() {
 }
 
 export default function Navbar() {
-  const { setTheme } = useTheme();
-  return (
-    <nav className="flex justify-between w-screen h-16 items-center px-14 fixed z-10">
-      <div className="logo flex items-center justify-center">
-        <Image
-          src={logoLightMode}
-          alt="Logo"
-          width={90}
-          height={90}
-          className="dark:block hidden"
-        />
-        <Image
-          src={logoDarkMode}
-          alt="Logo"
-          width={90}
-          height={90}
-          className="dark:hidden block"
-        />
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const pathname = usePathname();
 
-        <h1 className=" font-bold">LumoTrip</h1>
-        <ul className="flex gap-5  ml-5 text-[13.5px]">
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/destinations">Destinations</Link>
-          </li>
-          <li>
-            <Link href="/about">About</Link>
-          </li>
-        </ul>
-      </div>
-      <div className=" flex gap-2">
-        <div className="buttonLeanguege flex border-[1px] border-black dark:border-white relative rounded-4xl w-[90px] ">
-          <button className=" rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black p-1 h-full w-[55%] active:bg-black active:text-white absolute top-0 left-0">
-            EN
-          </button>
-          <button className=" rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black  h-full w-[55%] absolute top-0 right-0">
-            ID
-          </button>
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  React.useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
+  const isActive = (path: string) => pathname === path;
+
+  return (
+    <>
+      <nav
+        className={`flex justify-between w-full h-16 items-center px-5 sm:px-8 lg:px-14 fixed z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="logo flex items-center justify-center gap-2">
+          <Image
+            src={logoLightMode}
+            alt="Logo"
+            width={90}
+            height={90}
+            className="dark:block hidden w-16 sm:w-20 lg:w-[90px]"
+          />
+          <Image
+            src={logoDarkMode}
+            alt="Logo"
+            width={90}
+            height={90}
+            className="dark:hidden block w-16 sm:w-20 lg:w-[90px]"
+          />
+
+          <h1 className="font-bold text-base sm:text-lg lg:text-xl">
+            LumoTrip
+          </h1>
+
+          {/* Desktop Menu */}
+          <ul className="hidden lg:flex gap-5 ml-5 text-[13.5px]">
+            <li>
+              <Link
+                href="/"
+                className={`hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                  isActive("/")
+                    ? "text-blue-600 dark:text-blue-400 font-semibold"
+                    : ""
+                }`}
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/destinations"
+                className={`hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                  isActive("/destinations")
+                    ? "text-blue-600 dark:text-blue-400 font-semibold"
+                    : ""
+                }`}
+              >
+                Destinations
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/about"
+                className={`hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                  isActive("/about")
+                    ? "text-blue-600 dark:text-blue-400 font-semibold"
+                    : ""
+                }`}
+              >
+                About
+              </Link>
+            </li>
+          </ul>
         </div>
-        <div className="buttonLogin border-[1px] border-black dark:border-white w-[100px] flex justify-center p-1 rounded-4xl">
-          <Link href="/login">
-            <button className="  ">Login</button>
-          </Link>
+
+        {/* Desktop Actions */}
+        <div className="hidden md:flex gap-2 items-center">
+          <div className="buttonLanguage flex border-[1px] border-black dark:border-white relative rounded-4xl w-[90px] h-9">
+            <button className="rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black p-1 h-full w-[55%] active:bg-black active:text-white absolute top-0 left-0 transition-colors text-xs sm:text-sm">
+              EN
+            </button>
+            <button className="rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black p-1 h-full w-[55%] absolute top-0 right-0 transition-colors text-xs sm:text-sm">
+              ID
+            </button>
+          </div>
+          <div className="buttonLogin border-[1px] border-black dark:border-white w-[100px] flex justify-center p-1 rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+            <Link href="/login">
+              <button className="text-xs sm:text-sm">Login</button>
+            </Link>
+          </div>
+          <div>
+            <ModeToggle />
+          </div>
         </div>
-        <div className="">
+
+        {/* Mobile Menu Button */}
+        <div className="flex md:hidden gap-2 items-center">
           <ModeToggle />
+          <Button
+            variant="outline"
+            size="icon"
+            className="h-9 w-9"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
+          </Button>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-40 md:hidden">
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          <div className="absolute top-16 left-0 right-0 bg-white dark:bg-gray-900 shadow-lg">
+            <div className="flex flex-col p-5 gap-4">
+              {/* Mobile Navigation Links */}
+              <ul className="flex flex-col gap-4 text-base">
+                <li>
+                  <Link
+                    href="/"
+                    className={`block py-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                      isActive("/")
+                        ? "text-blue-600 dark:text-blue-400 font-semibold"
+                        : ""
+                    }`}
+                  >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/destinations"
+                    className={`block py-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                      isActive("/destinations")
+                        ? "text-blue-600 dark:text-blue-400 font-semibold"
+                        : ""
+                    }`}
+                  >
+                    Destinations
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/about"
+                    className={`block py-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                      isActive("/about")
+                        ? "text-blue-600 dark:text-blue-400 font-semibold"
+                        : ""
+                    }`}
+                  >
+                    About
+                  </Link>
+                </li>
+              </ul>
+
+              {/* Mobile Actions */}
+              <div className="flex flex-col gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+                <div className="buttonLanguage flex border-[1px] border-black dark:border-white relative rounded-4xl w-full max-w-[200px] h-10">
+                  <button className="rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black p-1 h-full w-[55%] active:bg-black active:text-white absolute top-0 left-0 transition-colors">
+                    EN
+                  </button>
+                  <button className="rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black p-1 h-full w-[55%] absolute top-0 right-0 transition-colors">
+                    ID
+                  </button>
+                </div>
+                <Link href="/login" className="w-full max-w-[200px]">
+                  <button className="w-full border-[1px] border-black dark:border-white p-2 rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+                    Login
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
