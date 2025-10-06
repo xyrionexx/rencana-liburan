@@ -78,7 +78,7 @@ export default function Footer() {
               <div className="linkWebSekolah flex flex-col gap-2 text-sm sm:text-base">
                 <p>
                   <a
-                    href="#"
+                    href="/termsofuse"
                     className="hover:underline hover:text-gray-700 transition-colors color-black dark:color-white"
                   >
                     Terms of Use
@@ -86,7 +86,7 @@ export default function Footer() {
                 </p>
                 <p>
                   <a
-                    href="#"
+                    href="/privacyandpolicy"
                     className="hover:underline hover:text-gray-700 transition-colors color-black dark:color-white"
                   >
                     Privacy Policy

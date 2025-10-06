@@ -190,6 +190,14 @@ export default function HomePage() {
             Real stories from real travelers who discovered their perfect
             journeys with us
           </p>
+
+          <div className="whitespace-nowrap scroll-smooth rounded-2xl mx-auto overflow-x-auto w-full max-w-5x">
+            <div className="flex gap-4">
+              <h2>Muhammad Iqbal</h2>
+              <p>Traveler Says</p>
+              <p></p>
+            </div>
+          </div>
         </div>
       </div>
     </>

@@ -14,22 +14,21 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 
 export default function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleGoogleLogin = async () => {
-    setIsLoading(true);
-    // Add your Google OAuth logic here
-    console.log("[v0] Google login initiated");
-    setTimeout(() => setIsLoading(false), 1000);
+    signIn("google", {
+      callbackUrl: "/destinations",
+    });
   };
 
   const handleGithubLogin = async () => {
-    setIsLoading(true);
-    // Add your GitHub OAuth logic here
-    console.log("[v0] GitHub login initiated");
-    setTimeout(() => setIsLoading(false), 1000);
+    signIn("github", {
+      callbackUrl: "/destinations",
+    });
   };
 
   const handleEmailLogin = async (e: React.FormEvent) => {
