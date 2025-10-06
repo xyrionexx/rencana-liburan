@@ -1,7 +1,8 @@
 import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
 import type { Metadata } from "next";
-import LayoutClient from "./lib/layoutClient/layoutClient";
+import Layoutprovider from "./lib/layouthprovider/layoutprovider";
 import { ThemeProvider } from "@/app/lib/components/theme-provide";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +35,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LayoutClient>{children}</LayoutClient>
+          <Layoutprovider>{children}</Layoutprovider>
         </ThemeProvider>
       </body>
     </html>

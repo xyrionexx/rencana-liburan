@@ -8,6 +8,7 @@ import Link from "next/link";
 import * as React from "react";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
+import userImage from "@/assets/user.jpg";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,7 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-
+import { signOut } from "next-auth/react";
 export function ModeToggle() {
   const { setTheme } = useTheme();
   return (
@@ -37,6 +38,30 @@ export function ModeToggle() {
         <DropdownMenuItem onClick={() => setTheme("system")}>
           System
         </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+export function UserModeToggle() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon" className="h-9 w-9">
+          <Image
+            src={userImage}
+            alt="User"
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem>Light</DropdownMenuItem>
+        <DropdownMenuItem>Dark</DropdownMenuItem>
+        <DropdownMenuItem>System</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
@@ -148,7 +173,7 @@ export default function Navbar() {
           </div>
           <div className="buttonLogin border-[1px] border-black dark:border-white w-[100px] flex justify-center p-1 rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
             <Link href="/login">
-              <button className="text-xs sm:text-sm">Login</button>
+              <button className="text-xs sm:text-sm">Sign In </button>
             </Link>
           </div>
           <div>
@@ -235,7 +260,7 @@ export default function Navbar() {
                 </div>
                 <Link href="/login" className="w-full max-w-[200px]">
                   <button className="w-full border-[1px] border-black dark:border-white p-2 rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
-                    Login
+                    Sign In
                   </button>
                 </Link>
               </div>
