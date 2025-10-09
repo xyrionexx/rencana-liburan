@@ -345,7 +345,7 @@ export default function HomePage() {
               {testimonial.map((testimoni, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
-                    <Card>
+                    <Card className="w-full h-full">
                       <CardContent className="flex aspect-square items-center justify-center p-6">
                         <figure>
                           {/* accent bar */}
