@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "paraglide-js compile --project ./project.inlang --outdir ./src\\paraglide && next build --turbopack",
-    "start": "next start",
-    "machine-translate": "inlang machine translate --project project.inlang"
+    "build": "next build --turbopack",
+    "start": "next start"
   },
   "dependencies": {
     "@iconify/react": "^6.0.2",
