@@ -7,8 +7,6 @@ const handler = NextAuth({
     signOut: "/",  
     signIn: "/login",
     error: "/error",
-    verifyRequest: "/login",
-    newUser: "/login",
   },
   providers: [
     GoogleProvider({
