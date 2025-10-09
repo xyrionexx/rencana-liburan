@@ -331,76 +331,89 @@ export default function HomePage() {
           onMouseLeave={handleMouseLeave}
           className="w-full"
         >
-          <CarouselContent>
-            {testimonial.map((testimoni, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1 h-full">
-                  <Card className="h-full">
-                    <CardContent className="flex items-start p-6 h-full">
-                      <figure className="flex flex-col h-full">
-                        {/* accent bar */}
-                        <div
-                          className="mb-4 h-1.5 w-12 rounded-full bg-primary flex-shrink-0"
-                          aria-hidden="true"
-                        />
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            setApi={setApi}
+          >
+            <CarouselContent>
+              {testimonial.map((testimoni, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1 h-full">
+                    <Card className="h-full">
+                      <CardContent className="flex items-start p-6 h-full">
+                        <figure className="flex flex-col h-full">
+                          {/* accent bar */}
+                          <div
+                            className="mb-4 h-1.5 w-12 rounded-full bg-primary flex-shrink-0"
+                            aria-hidden="true"
+                          />
 
-                        {/* Testimonial text with proper spacing */}
-                        <blockquote className="text-pretty text-sm sm:text-base leading-relaxed flex-grow mb-4">
-                          "{testimoni.testimonial}"
-                        </blockquote>
+                          {/* Testimonial text with proper spacing */}
+                          <blockquote className="text-pretty text-sm sm:text-base leading-relaxed flex-grow mb-4">
+                            "{testimoni.testimonial}"
+                          </blockquote>
 
-                        {/* Author info at bottom */}
-                        <figcaption className="mt-auto flex items-center gap-3 sm:gap-4 flex-shrink-0">
-                          <Avatar className="size-12 sm:size-14 ring-1 ring-ring/40 flex-shrink-0">
-                            <AvatarImage
-                              src={testimoni.photo}
-                              alt={`Photo of ${testimoni.name}`}
-                            />
-                            <AvatarFallback className="text-xs sm:text-sm">
-                              {testimoni.name
-                                .split(" ")
-                                .map((n) => n[0])
-                                .join("")}
-                            </AvatarFallback>
-                          </Avatar>
-                          <div className="flex min-w-0 flex-col">
-                            <span className="text-xs sm:text-sm font-medium text-foreground truncate">
-                              {testimoni.name}
-                            </span>
-                            <span className="text-xs text-muted-foreground truncate">
-                              {testimoni.location}
-                            </span>
-                            {/* Rating stars */}
-                            <div
-                              className="flex gap-0.5 mt-1"
-                              aria-label={`Rating: ${testimoni.rating} out of 5`}
-                            >
-                              {[...Array(5)].map((_, i) => (
-                                <svg
-                                  key={i}
-                                  className={`size-3 sm:size-4 ${
-                                    i < testimoni.rating
-                                      ? "fill-yellow-400 text-yellow-400"
-                                      : "fill-gray-300 text-gray-300"
-                                  }`}
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                                </svg>
-                              ))}
+                          {/* Author info at bottom */}
+                          <figcaption className="mt-auto flex items-center gap-3 sm:gap-4 flex-shrink-0">
+                            <Avatar className="size-12 sm:size-14 ring-1 ring-ring/40 flex-shrink-0">
+                              <AvatarImage
+                                src={testimoni.photo}
+                                alt={`Photo of ${testimoni.name}`}
+                              />
+                              <AvatarFallback className="text-xs sm:text-sm">
+                                {testimoni.name
+                                  .split(" ")
+                                  .map((n) => n[0])
+                                  .join("")}
+                              </AvatarFallback>
+                            </Avatar>
+                            <div className="flex min-w-0 flex-col">
+                              <span className="text-xs sm:text-sm font-medium text-foreground truncate">
+                                {testimoni.name}
+                              </span>
+                              <span className="text-xs text-muted-foreground truncate">
+                                {testimoni.location}
+                              </span>
+                              {/* Rating stars */}
+                              <div
+                                className="flex gap-0.5 mt-1"
+                                aria-label={`Rating: ${testimoni.rating} out of 5`}
+                              >
+                                {[...Array(5)].map((_, i) => (
+                                  <svg
+                                    key={i}
+                                    className={`size-3 sm:size-4 ${
+                                      i < testimoni.rating
+                                        ? "fill-yellow-400 text-yellow-400"
+                                        : "fill-gray-300 text-gray-300"
+                                    }`}
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                  </svg>
+                                ))}
+                              </div>
                             </div>
-                          </div>
-                        </figcaption>
-                      </figure>
-                    </CardContent>
-                  </Card>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="hidden sm:flex" />
-          <CarouselNext className="hidden sm:flex" />
+                          </figcaption>
+                        </figure>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden sm:flex" />
+            <CarouselNext className="hidden sm:flex" />
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </div>
     </>
