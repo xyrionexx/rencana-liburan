@@ -409,8 +409,8 @@ export default function HomePage() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex" />
-            <CarouselNext className="hidden sm:flex" />
+            <CarouselPrevious className="max-sm:hidden sm:flex" />
+            <CarouselNext className="max-sm:hidden sm:flex" />
             <CarouselPrevious />
             <CarouselNext />
           </Carousel>
