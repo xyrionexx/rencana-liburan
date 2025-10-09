@@ -1,3 +1,4 @@
+import BackButton from "@/components/component/backbutton";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Home } from "lucide-react";
@@ -42,17 +43,7 @@ export default function NotFound() {
             </Link>
           </Button>
 
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="min-w-[160px] h-12 text-base font-normal border-border hover:bg-muted bg-transparent"
-          >
-            <Link href="javascript:history.back()">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Go Back
-            </Link>
-          </Button>
+          <BackButton />
         </div>
 
         {/* Decorative Element */}

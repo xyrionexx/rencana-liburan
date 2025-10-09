@@ -1,6 +1,6 @@
-import HomePage from "@/app/lib/heropage";
+import HomePage from "@/components/heropage/heropage";
 import { Icon } from "@iconify/react";
-import SliderHomePage from "@/app/lib/slider/sliderHomePage";
+import SliderHomePage from "@/components/slider/sliderHomePage";
 
 export default function HeroPage() {
   return (

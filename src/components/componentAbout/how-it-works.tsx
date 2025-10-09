@@ -1,10 +1,10 @@
 import { Card } from "@/components/ui/card";
 import { Search, Wand2, Map, Luggage } from "lucide-react";
 import Image from "next/image";
-import travelPlanningStep1 from "../../../assets/travel-planning-step-1.jpg";
-import travelPlanningStep2 from "../../../assets/travel-planning-step-2.jpg";
-import travelPlanningStep3 from "../../../assets/travel-planning-step-3.jpg";
-import travelPlanningStep4 from "../../../assets/travel-planning-step-4.jpg";
+import travelPlanningStep1 from "@/assets/travel-planning-step-1.jpg";
+import travelPlanningStep2 from "@/assets/travel-planning-step-2.jpg";
+import travelPlanningStep3 from "@/assets/travel-planning-step-3.jpg";
+import travelPlanningStep4 from "@/assets/travel-planning-step-4.jpg";
 
 const steps = [
   {

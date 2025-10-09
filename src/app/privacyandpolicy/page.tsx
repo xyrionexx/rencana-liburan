@@ -4,17 +4,6 @@ import { Separator } from "@/components/ui/separator";
 export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-card">
-        <div className="container mx-auto px-6 py-6 md:py-8">
-          <Link href="/" className="inline-block">
-            <h1 className="font-serif text-2xl md:text-3xl font-semibold text-foreground tracking-tight">
-              Lumotrip
-            </h1>
-          </Link>
-        </div>
-      </header>
-
       {/* Main Content */}
       <main className="container mx-auto px-6 py-12 md:py-20 max-w-4xl">
         {/* Hero Section */}
@@ -435,8 +424,12 @@ export default function PrivacyPolicyPage() {
               <p className="text-foreground font-medium">
                 Lumotrip Privacy Team
               </p>
-              <p className="text-foreground/80">Email: privacy@lumotrip.com</p>
-              <p className="text-foreground/80">Website: www.lumotrip.com</p>
+              <p className="text-foreground/80">
+                Email: infolumotrip@gmail.com
+              </p>
+              <p className="text-foreground/80">
+                Website: www.lumotrip.borrowfy.site
+              </p>
               <p className="text-foreground/80">
                 Response Time: Within 30 days
               </p>
@@ -521,35 +514,6 @@ export default function PrivacyPolicyPage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-card mt-20">
-        <div className="container mx-auto px-6 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-muted-foreground">
-              © 2025 Lumotrip. All rights reserved.
-            </p>
-            <div className="flex items-center gap-6">
-              <Link
-                href="/privacy"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Terms of Use
-              </Link>
-              <Link
-                href="/contact"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

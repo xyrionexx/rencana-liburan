@@ -2,13 +2,13 @@ import { Icon } from "@iconify/react";
 import Image from "next/image";
 import about from "@/assets/about.jpg";
 import aboutpeminjaman from "@/assets/aboutpeminjaman.jpg";
-import { HowItWorks } from "@/app/lib/components/how-it-works";
-import { Mission } from "@/app/lib/components/mission";
-import { Philosophy } from "@/app/lib/components/philosophy";
-import { Team } from "@/app/lib/components/team";
-import { Features } from "@/app/lib/components/features";
-import { Experience } from "../lib/components/experience";
-import { CTA } from "../lib/components/cta";
+import { HowItWorks } from "@/components/componentAbout/how-it-works";
+import { Mission } from "@/components/componentAbout/mission";
+import { Philosophy } from "@/components/componentAbout/philosophy";
+import { Team } from "@/components/componentAbout/team";
+import { Features } from "@/components/componentAbout/features";
+import { Experience } from "../../components/componentAbout/experience";
+import { CTA } from "../../components/componentAbout/cta";
 
 export default function AboutPage() {
   return (

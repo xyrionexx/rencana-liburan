@@ -125,3 +125,9 @@ body {
   }
 }
 
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget-icon,
+.goog-te-combo {
+  display: none !important;
+}
+
