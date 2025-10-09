@@ -1,11 +1,141 @@
+"use client";
 import Image from "next/image";
 import ilustration from "@/assets/ilustration.png";
 import { Icon } from "@iconify/react";
 import user from "@/assets/user.jpg";
-import SliderHomePage from "./slider/sliderHomePage";
+import SliderHomePage from "../slider/sliderHomePage";
 import company1 from "@/assets/company1.png";
-
+import { useState } from "react";
+import * as React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 export default function HomePage() {
+  const testimonial = [
+    {
+      id: 1,
+      name: "Michael Johnson",
+      location: "New York",
+      rating: 5,
+      date: "2024-09-15",
+      photo: "https://i.pravatar.cc/150?img=12",
+      testimonial:
+        "This website really helped me plan my family vacation to Hawaii. All the information is comprehensive and easy to access. The itinerary created was very detailed and practical!",
+    },
+    {
+      id: 2,
+      name: "Sarah Williams",
+      location: "Los Angeles",
+      rating: 5,
+      date: "2024-10-01",
+      photo: "https://i.pravatar.cc/150?img=45",
+      testimonial:
+        "The destination recommendation feature is incredibly accurate! I discovered beautiful hidden gems in Colorado. Totally worth it and saves so much planning time.",
+    },
+    {
+      id: 3,
+      name: "David Chen",
+      location: "San Francisco",
+      rating: 4,
+      date: "2024-09-28",
+      photo: "https://i.pravatar.cc/150?img=33",
+      testimonial:
+        "The interface is user-friendly and easy to navigate. The budget estimate provided is quite accurate too. Very helpful for my backpacking trip to Thailand.",
+    },
+    {
+      id: 4,
+      name: "Emily Rodriguez",
+      location: "Miami",
+      rating: 5,
+      date: "2024-10-05",
+      photo: "https://i.pravatar.cc/150?img=23",
+      testimonial:
+        "Best app for travel planning! I can customize my itinerary according to my preferences and budget. Hotel and restaurant recommendations are also very helpful. Highly recommended!",
+    },
+    {
+      id: 5,
+      name: "James Anderson",
+      location: "Chicago",
+      rating: 4,
+      date: "2024-10-03",
+      photo: "https://i.pravatar.cc/150?img=68",
+      testimonial:
+        "Very practical for solo travel planning. The transportation and accommodation cost calculator is very accurate. I feel much more confident planning my own trips now.",
+    },
+  ];
+
+  const [email, setEmail] = useState("");
+
+  // State dan ref untuk Carousel
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+  const autoplayRef = React.useRef<NodeJS.Timeout | null>(null);
+  const totalSlides = 5;
+
+  // Fungsi untuk menggerakkan slide berikutnya
+  const scrollNext = React.useCallback(() => {
+    if (api) {
+      api.scrollNext();
+      setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    }
+  }, [api, totalSlides]);
+
+  // Handler untuk mengatur API carousel
+  React.useEffect(() => {
+    if (!api) return;
+
+    // Start autoplay
+    autoplayRef.current = setInterval(scrollNext, 3000);
+
+    // Cleanup
+    return () => {
+      if (autoplayRef.current) {
+        clearInterval(autoplayRef.current);
+      }
+    };
+  }, [api, scrollNext]);
+
+  // Handler untuk mouse events pada carousel
+  const handleMouseEnter = React.useCallback(() => {
+    if (autoplayRef.current) {
+      clearInterval(autoplayRef.current);
+      autoplayRef.current = null;
+    }
+  }, []);
+
+  const handleMouseLeave = React.useCallback(() => {
+    if (!autoplayRef.current && api) {
+      autoplayRef.current = setInterval(scrollNext, 3000);
+    }
+  }, [api, scrollNext]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("/api/message/sendemail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to send email");
+      }
+      alert("Email sent successfully");
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("Failed to send email");
+    }
+  };
+
   return (
     <>
       <div className="w-full min-h-screen flex flex-col lg:flex-row justify-between items-center px-5 sm:px-10 lg:px-20 py-10 lg:py-0 relative overflow-hidden">
@@ -76,11 +206,16 @@ export default function HomePage() {
                 />
                 <input
                   type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
                   className="flex-grow outline-none text-sm sm:text-base bg-transparent placeholder:text-gray-400"
                 />
               </div>
-              <button className="group bg-blue-300 dark:bg-gray-700 p-2.5 rounded-full flex-shrink-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
+              <button
+                onClick={handleSubmit}
+                className="group bg-blue-300 dark:bg-gray-700 p-2.5 rounded-full flex-shrink-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+              >
                 <Icon
                   icon="line-md:arrow-up"
                   width="30"
@@ -181,7 +316,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="px-5 sm:px-10 lg:px-20 min-h-screen w-full py-16 lg:py-24">
+      <div className="px-5 sm:px-10 lg:px-20 min-h-screen w-full py-16 lg:py-24 gap-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6   bg-clip-text ">
             What Our Travelers Say
@@ -190,14 +325,61 @@ export default function HomePage() {
             Real stories from real travelers who discovered their perfect
             journeys with us
           </p>
-
-          <div className="whitespace-nowrap scroll-smooth rounded-2xl mx-auto overflow-x-auto w-full max-w-5x">
-            <div className="flex gap-4">
-              <h2>Muhammad Iqbal</h2>
-              <p>Traveler Says</p>
-              <p></p>
-            </div>
-          </div>
+        </div>
+        <div
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className="w-full"
+        >
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            setApi={setApi}
+          >
+            <CarouselContent>
+              {testimonial.map((testimoni, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1">
+                    <Card>
+                      <CardContent className="flex aspect-square items-center justify-center p-6">
+                        <figure>
+                          {/* accent bar */}
+                          <div
+                            className="mb-5 h-1.5 w-12 rounded-full bg-primary"
+                            aria-hidden="true"
+                          />
+                          <blockquote className="text-pretty text-base leading-relaxed md:text-lg">
+                            “{testimoni.testimonial}”
+                          </blockquote>
+                          <figcaption className="mt-6 flex items-center gap-4">
+                            <Avatar className="size-14 ring-1 ring-ring/40">
+                              <AvatarImage
+                                src={testimoni.photo}
+                                alt={`Foto ${testimoni.name}`}
+                              />
+                              <AvatarFallback>{testimoni.name}</AvatarFallback>
+                            </Avatar>
+                            <div className="flex min-w-0 flex-col">
+                              <span className="text-sm font-medium text-foreground">
+                                {testimoni.name}
+                              </span>
+                            </div>
+                          </figcaption>
+                        </figure>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </div>
     </>

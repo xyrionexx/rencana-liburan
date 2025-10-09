@@ -1,8 +1,8 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Navbar from "@/app/lib/navbar";
-import Footer from "@/app/lib/footer";
+import Navbar from "@/components/component/navbar/navbar";
+import Footer from "@/components/component/footer/footer";
 
 export default function LayoutClient({
   children,
@@ -11,10 +11,11 @@ export default function LayoutClient({
 }) {
   const pathname = usePathname();
   const path = pathname.replace("/", "");
+  const isNotFoundPage = pathname === "/404" || pathname === "/not-found";
 
   return (
     <>
-      {path !== "login" ? (
+      {path !== "login" && !isNotFoundPage ? (
         <>
           <Navbar />
           {children}
