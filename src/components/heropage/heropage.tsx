@@ -139,41 +139,41 @@ export default function HomePage() {
   return (
     <>
       <div className="w-full min-h-screen flex flex-col lg:flex-row justify-between items-center px-5 sm:px-10 lg:px-20 py-10 lg:py-0 relative overflow-hidden">
-        <div className="bg-gradient-to-br from-[#6D94C5] via-[#8BA8CE] to-[#A9BED7] absolute top-0 left-0 w-[40vw] sm:w-[30vw] lg:w-[25vw] h-[40vw] sm:h-[30vw] lg:h-[25vw] rounded-full blur-3xl opacity-40 z-[-1] animate-pulse"></div>
-        <div className="bg-gradient-to-tl from-[#CBDCEB] via-[#B8D4E8] to-[#9CC4DD] absolute bottom-0 right-0 w-[45vw] sm:w-[35vw] lg:w-[30vw] h-[45vw] sm:h-[35vw] lg:h-[30vw] rounded-full blur-3xl opacity-30 z-[-1] dark:right-40 dark:bottom-14 animate-pulse delay-700"></div>
+        <div className="bg-linear-to-br from-[#6D94C5] via-[#8BA8CE] to-[#A9BED7] absolute top-0 left-0 w-[40vw] sm:w-[30vw] lg:w-[25vw] h-[40vw] sm:h-[30vw] lg:h-[25vw] rounded-full blur-3xl opacity-40 z-[-1] animate-pulse"></div>
+        <div className="bg-linear-to-tl from-[#CBDCEB] via-[#B8D4E8] to-[#9CC4DD] absolute bottom-0 right-0 w-[45vw] sm:w-[35vw] lg:w-[30vw] h-[45vw] sm:h-[35vw] lg:h-[30vw] rounded-full blur-3xl opacity-30 z-[-1] dark:right-40 dark:bottom-14 animate-pulse delay-700"></div>
 
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.05)_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.05)_1px,transparent_0)] bg-[size:40px_40px] z-[-1] opacity-50"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.05)_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.05)_1px,transparent_0)] bg-size-[40px_40px] z-[-1] opacity-50"></div>
 
         <div className="flex flex-col w-full lg:w-[50%] gap-6 sm:gap-7 mb-8 lg:mb-0 max-sm:mt-10">
           <div className="user flex relative h-10 mb-2">
-            <div className="absolute w-8 h-8 sm:w-10 sm:h-10 lg:w-[45px] lg:h-[45px] rounded-full bg-gradient-to-r from-blue-400 to-blue-600 blur-md opacity-60 z-[-1]"></div>
+            <div className="absolute w-8 h-8 sm:w-10 sm:h-10 lg:w-[45px] lg:h-[45px] rounded-full bg-linear-to-r from-blue-400 to-blue-600 blur-md opacity-60 z-[-1]"></div>
             <Image
               src={user}
               alt="User"
               width={45}
               height={45}
-              className="rounded-full z-[0] absolute w-8 h-8 sm:w-10 sm:h-10 lg:w-[45px] lg:h-[45px]  dark:border-gray-800 shadow-lg"
+              className="rounded-full z-0 absolute w-8 h-8 sm:w-10 sm:h-10 lg:w-[45px] lg:h-[45px]  dark:border-gray-800 shadow-lg"
             />
             <Image
               src={user}
               alt="User"
               width={45}
               height={45}
-              className="rounded-full z-[1] absolute left-6 sm:left-8 lg:left-10 w-8 h-8 sm:w-10 sm:h-10 lg:w-[45px] lg:h-[45px]  dark:border-gray-800 shadow-lg"
+              className="rounded-full z-1 absolute left-6 sm:left-8 lg:left-10 w-8 h-8 sm:w-10 sm:h-10 lg:w-[45px] lg:h-[45px]  dark:border-gray-800 shadow-lg"
             />
             <Image
               src={user}
               alt="User"
               width={45}
               height={45}
-              className="rounded-full z-[2] absolute left-12 sm:left-16 lg:left-20 w-8 h-8 sm:w-10 sm:h-10 lg:w-[45px] lg:h-[45px]  dark:border-gray-800 shadow-lg"
+              className="rounded-full z-2 absolute left-12 sm:left-16 lg:left-20 w-8 h-8 sm:w-10 sm:h-10 lg:w-[45px] lg:h-[45px]  dark:border-gray-800 shadow-lg"
             />
             <div className="absolute left-20 sm:left-28 lg:left-36 top-1 sm:top-2 bg-blue-300 text-black dark:bg-gray-700 dark:text-white text-xs sm:text-sm px-3 sm:px-4 py-1 rounded-full shadow-lg font-medium">
               Trusted by 100K+
             </div>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-5xl font-bold w-full lg:w-[95%] leading-tight bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 dark:from-white dark:via-blue-200 dark:to-white bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-5xl font-bold w-full lg:w-[95%] leading-tight bg-linear-to-r from-gray-900 via-blue-900 to-gray-900 dark:from-white dark:via-blue-200 dark:to-white bg-clip-text text-transparent">
             Craft Your Perfect Journey, Create Timeless Memories
           </h1>
 
@@ -209,18 +209,15 @@ export default function HomePage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
-                  className="flex-grow outline-none text-sm sm:text-base bg-transparent placeholder:text-gray-400"
+                  className="grow outline-none text-sm sm:text-base bg-transparent placeholder:text-gray-400"
                 />
               </div>
-              <button
-                onClick={handleSubmit}
-                className="group bg-blue-300 dark:bg-gray-700 p-2.5 rounded-full flex-shrink-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
-              >
+              <button className="group bg-blue-300 dark:bg-gray-700 p-2.5 rounded-full shrink-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110">
                 <Icon
                   icon="line-md:arrow-up"
                   width="30"
                   height="30"
-                  className="rotate-[40deg] w-6 h-6 sm:w-7 sm:h-7 lg:w-[30px] lg:h-[30px] text-white group-hover:rotate-[50deg] transition-transform duration-300"
+                  className="rotate-40 w-6 h-6 sm:w-7 sm:h-7 lg:w-[30px] lg:h-[30px] text-white group-hover:rotate-50 transition-transform duration-300"
                 />
               </button>
             </div>
@@ -228,7 +225,7 @@ export default function HomePage() {
         </div>
 
         <div className="ilustration-image w-full lg:w-[50%] flex justify-center mt-8 lg:mt-0 relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-3xl blur-2xl"></div>
+          <div className="absolute inset-0 bg-linear-to-br from-blue-400/20 to-purple-400/20 rounded-3xl blur-2xl"></div>
           <Image
             src={ilustration}
             alt="Ilustration"
@@ -237,9 +234,9 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="px-5 sm:px-8 lg:px-12 py-16 sm:py-24 bg-gradient-to-b from-transparent via-gray-50/50 to-transparent dark:via-gray-900/50">
+      <div className="px-5 sm:px-8 lg:px-12 py-16 sm:py-24 bg-linear-to-b from-transparent via-gray-50/50 to-transparent dark:via-gray-900/50">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r  bg-clip-text ">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 bg-linear-to-r  bg-clip-text ">
             Luxury Planning Features
           </h2>
           <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
@@ -252,7 +249,7 @@ export default function HomePage() {
       <div className="px-5 sm:px-10 lg:px-20 flex items-center w-full min-h-screen py-16 lg:py-24">
         <div className="flex flex-col gap-8 sm:gap-10 lg:gap-12 w-full">
           <div className="headline flex flex-col gap-4 sm:gap-5 lg:gap-6">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl w-full lg:w-[90%] font-bold leading-tight bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 dark:from-white dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl w-full lg:w-[90%] font-bold leading-tight bg-linear-to-r from-gray-900 via-blue-900 to-purple-900 dark:from-white dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent">
               Explore World-Class Destinations with Confidence
             </h2>
             <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300">
@@ -267,7 +264,7 @@ export default function HomePage() {
               placeholder="Where would you like to go?"
               className="w-full px-5 sm:px-6 py-3.5 outline-none text-sm sm:text-base bg-transparent placeholder:text-gray-400"
             />
-            <button className="w-14 sm:w-16 lg:w-[12%] dark:bg-blue-500 rotate-180 flex-shrink-0 transition-all duration-300 group">
+            <button className="w-14 sm:w-16 lg:w-[12%] dark:bg-blue-500 rotate-180 shrink-0 transition-all duration-300 group">
               <i className="flex items-center justify-center">
                 <Icon
                   icon="proicons:arrow-reply"
@@ -294,7 +291,7 @@ export default function HomePage() {
                 key={index}
                 className="group relative backdrop-blur-sm bg-white/80 dark:bg-gray-800/80 p-6 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-linear-to-br from-blue-600/10 to-purple-600/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-3">
                     <Icon
@@ -350,18 +347,18 @@ export default function HomePage() {
                         <figure className="flex flex-col h-full">
                           {/* accent bar */}
                           <div
-                            className="mb-4 h-1.5 w-12 rounded-full bg-primary flex-shrink-0"
+                            className="mb-4 h-1.5 w-12 rounded-full bg-primary shrink-0"
                             aria-hidden="true"
                           />
 
                           {/* Testimonial text with proper spacing */}
-                          <blockquote className="text-pretty text-sm sm:text-base leading-relaxed flex-grow mb-4">
+                          <blockquote className="text-pretty text-sm sm:text-base leading-relaxed grow mb-4">
                             "{testimoni.testimonial}"
                           </blockquote>
 
                           {/* Author info at bottom */}
-                          <figcaption className="mt-auto flex items-center gap-3 sm:gap-4 flex-shrink-0">
-                            <Avatar className="size-12 sm:size-14 ring-1 ring-ring/40 flex-shrink-0">
+                          <figcaption className="mt-auto flex items-center gap-3 sm:gap-4 shrink-0">
+                            <Avatar className="size-12 sm:size-14 ring-1 ring-ring/40 shrink-0">
                               <AvatarImage
                                 src={testimoni.photo}
                                 alt={`Photo of ${testimoni.name}`}

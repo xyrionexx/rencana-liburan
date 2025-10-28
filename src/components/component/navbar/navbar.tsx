@@ -16,9 +16,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { signOut } from "next-auth/react";
+import { useSession, signIn, signOut } from "next-auth/react";
+
 export function ModeToggle() {
   const { setTheme } = useTheme();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -71,6 +73,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const pathname = usePathname();
+  const { data: session, status } = useSession();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -163,18 +166,18 @@ export default function Navbar() {
 
         {/* Desktop Actions */}
         <div className="hidden md:flex gap-2 items-center">
-          <div className="buttonLanguage flex border-[1px] border-black dark:border-white relative rounded-4xl w-[90px] h-9">
-            <button className="rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black p-1 h-full w-[55%] active:bg-black active:text-white absolute top-0 left-0 transition-colors text-xs sm:text-sm">
-              EN
-            </button>
-            <button className="rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black p-1 h-full w-[55%] absolute top-0 right-0 transition-colors text-xs sm:text-sm">
-              ID
-            </button>
-          </div>
-          <div className="buttonLogin border-[1px] border-black dark:border-white w-[100px] flex justify-center p-1 rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
-            <Link href="/login">
-              <button className="text-xs sm:text-sm">Sign In </button>
-            </Link>
+          <div className="buttonLogin border border-black dark:border-white w-[100px] flex justify-center p-1 rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+            {status === "loading" ? (
+              <span className="text-xs sm:text-sm">Loading...</span>
+            ) : !session ? (
+              <Link href="/login">
+                <button className="text-xs sm:text-sm">Sign In</button>
+              </Link>
+            ) : (
+              <button className="text-xs sm:text-sm" onClick={() => signOut()}>
+                Hi, {session.user?.name}
+              </button>
+            )}
           </div>
           <div>
             <ModeToggle />
@@ -250,7 +253,7 @@ export default function Navbar() {
 
               {/* Mobile Actions */}
               <div className="flex flex-col gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
-                <div className="buttonLanguage flex border-[1px] border-black dark:border-white relative rounded-4xl w-full max-w-[200px] h-10">
+                <div className="buttonLanguage flex border border-black dark:border-white relative rounded-4xl w-full max-w-[200px] h-10">
                   <button className="rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black p-1 h-full w-[55%] active:bg-black active:text-white absolute top-0 left-0 transition-colors">
                     EN
                   </button>
@@ -259,7 +262,7 @@ export default function Navbar() {
                   </button>
                 </div>
                 <Link href="/login" className="w-full max-w-[200px]">
-                  <button className="w-full border-[1px] border-black dark:border-white p-2 rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+                  <button className="w-full border border-black dark:border-white p-2 rounded-4xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
                     Sign In
                   </button>
                 </Link>

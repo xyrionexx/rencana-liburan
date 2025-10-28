@@ -12,10 +12,18 @@ export default function LayoutClient({
   const pathname = usePathname();
   const path = pathname.replace("/", "");
   const isNotFoundPage = pathname === "/404" || pathname === "/not-found";
+  const paths = [
+    "login",
+    "register",
+    "privacyandpolicy",
+    "not-found",
+    "destinations/createplan",
+    "destinations/rencana",
+  ];
 
   return (
     <>
-      {path !== "login" && !isNotFoundPage ? (
+      {!paths.includes(path) && !isNotFoundPage ? (
         <>
           <Navbar />
           {children}

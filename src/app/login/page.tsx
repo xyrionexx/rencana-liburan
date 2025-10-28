@@ -15,9 +15,14 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleGoogleLogin = async () => {
     signIn("google", {
@@ -31,12 +36,27 @@ export default function LoginForm() {
     });
   };
 
-  const handleEmailLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // Add your email login logic here
-    console.log("[v0] Email login initiated");
-    setTimeout(() => setIsLoading(false), 1000);
+    setError("");
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+
+      if (res?.ok) {
+        router.push("/destinations");
+      } else {
+        setError("Login gagal, cek email/password");
+      }
+    } catch (err) {
+      setError("Terjadi kesalahan, coba lagi");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -46,6 +66,11 @@ export default function LoginForm() {
           <CardTitle className="text-3xl font-bold tracking-tight text-card-foreground">
             Welcome back
           </CardTitle>
+          {error && (
+            <CardDescription className="text-red-500 text-sm text-center">
+              {error}
+            </CardDescription>
+          )}
           <CardDescription className="text-muted-foreground">
             Sign in to your account to continue
           </CardDescription>
@@ -108,7 +133,7 @@ export default function LoginForm() {
               </span>
             </div>
           </div>
-          <form onSubmit={handleEmailLogin} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email" className="text-card-foreground">
                 Email
@@ -120,6 +145,8 @@ export default function LoginForm() {
                 required
                 className="h-11 bg-secondary border-border text-secondary-foreground placeholder:text-muted-foreground"
                 disabled={isLoading}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="space-y-2">
@@ -140,6 +167,8 @@ export default function LoginForm() {
                 required
                 className="h-11 bg-secondary border-border text-secondary-foreground"
                 disabled={isLoading}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <Button
@@ -152,7 +181,10 @@ export default function LoginForm() {
           </form>
           <p className="text-center text-sm text-muted-foreground">
             Don't have an account?{" "}
-            <a href="#" className="text-foreground hover:underline font-medium">
+            <a
+              href="/register"
+              className="text-foreground hover:underline font-medium"
+            >
               Sign up
             </a>
           </p>
